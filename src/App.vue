@@ -175,7 +175,7 @@ export default {
           
           var reader = new FileReader();
           
-          reader.onload = (e) => {
+          reader.onload = function(e){
               this.imageSrc = e.target.result;
               this.imgLoad(true);
               this.disableSlider = false;
