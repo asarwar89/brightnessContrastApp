@@ -125,9 +125,6 @@ export default {
       canvas.width = this.imageWidth;
       canvas.height = this.imageHeight;
 
-      var canvasBrightness = this.imageBrightness * 2;
-      var canvasContrast = this.imageContrast / 50;
-
       context.drawImage(this.targetImage, 0, 0,this.imageWidth, this.imageHeight );
 
       var imageData = context.getImageData(0, 0, this.imageWidth, this.imageHeight);
@@ -148,7 +145,7 @@ export default {
       var contrastVal = this.imageContrast * 2 - 100;
       var factor = (259.0 * (contrastVal + 255.0)) / (255.0 * (259.0 - contrastVal));
 
-      for (var i = 0; i < data.length; i+= 4) {
+      for (i = 0; i < data.length; i+= 4) {
         data[i] = this.limitColorValue(factor * (data[i] - 128.0) + 128.0);
         data[i+1] = this.limitColorValue(factor * (data[i+1] - 128.0) + 128.0);
         data[i+2] = this.limitColorValue(factor * (data[i+2] - 128.0) + 128.0);
