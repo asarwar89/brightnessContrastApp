@@ -12,8 +12,7 @@
     props: {
       value: {
         type: Number
-      },
-      tooltip: false
+      }
     },
     components: {
       vueSlider
