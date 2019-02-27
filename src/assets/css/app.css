@@ -1,0 +1,194 @@
+
+  .bar-element {
+    margin: 5px 40px 15px;
+    text-align: center;
+    box-shadow: 0 0 15px 4px rgba(0,0,0,0.05);
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .bar-element h2 {
+    font-size: 36px;
+    font-weight: normal;
+    line-height: 50px;
+  }
+
+  .bar-element p {
+    font-size: 26px;
+    color: #42506B;
+    line-height: 50px;
+  }
+
+  .bar-element.brightness h2 {
+    color: #1aa954;
+  }
+
+  .slider-wrapper.inactive .vue-slider-component .vue-slider,
+  .slider-wrapper.inactive .vue-slider-component .vue-slider-process {
+    background-color: #ccc;
+  }
+
+  .brightness .vue-slider-component .vue-slider {
+    background-color: #c7e9d5;
+    height: 10px !important;
+  }
+
+  .brightness .vue-slider-component .vue-slider-process {
+    background-color: #1aa954;
+  }
+
+  .bar-element.contrast h2 {
+    color: #4890e7;
+  }
+
+  .contrast .vue-slider-component .vue-slider {
+    background-color: #c8dbea;
+    height: 10px !important;
+  }
+
+  .contrast .vue-slider-component .vue-slider-process {
+    background-color: #4890e7;
+  }
+
+  .vue-slider-always.vue-slider-dot {
+    width: 24px !important;
+    height: 24px !important;
+    top: -12px !important;
+    border: 5px solid #fff;
+    border-radius: 16px;
+  }
+
+  .slider-wrapper.inactive .vue-slider-component .vue-slider-dot .vue-slider-dot-handle {
+    background-color: #ccc;
+  }
+
+  .brightness .vue-slider-component .vue-slider-dot .vue-slider-dot-handle {
+    background-color: #1aa954;
+    box-shadow: none;
+  }
+
+  .contrast .vue-slider-component .vue-slider-dot .vue-slider-dot-handle {
+    background-color: #4890e7;
+    box-shadow: none;
+  }
+
+  .user-section {
+    position: relative;
+    margin: 5px 40px 15px;
+    padding-bottom: 15px;
+  }
+
+  .user-section img {
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+  }
+
+  #reset-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #42506B;
+  }
+
+  .file-row, .file-row button {
+    text-transform: uppercase;
+    font-size: 22px;
+    line-height: 50px;
+  }
+
+  .upload-button-wrapper {
+    display: inline-block;
+    position: relative;
+    float: right;
+  }
+
+  input#fileUpload {
+    position: absolute;
+    top: 1px;
+    left: 0;
+    width: 100%;
+    line-height: 63px;
+    display: block;
+    opacity: 0;
+  }
+
+  canvas#viewport {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;    
+  }
+
+  .file-row {
+    padding: 36px 10px 10px;
+    margin-top: -4px;
+    border-left: 2px solid #DCDEE4;
+    border-bottom: 2px solid #DCDEE4;
+    border-right: 2px solid #DCDEE4;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  .name-block {
+    display: inline-block;
+    border: 2px solid #DCDEE4;
+    border-radius: 10px;
+  }
+
+  input#userImgFile {
+    font-size: 22px;
+    border: none;
+    color: #25A95B;
+    width: 300px;
+    overflow: hidden;
+  }
+
+  .file-row label {
+    color: #42506B;
+    border-right: 2px solid #dcdee3;
+    display: inline-block;
+    padding-right: 20px;
+    line-height: 60px;
+    background: #F6F8FA;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+
+  .file-row label, 
+  input#userImgFile {
+      padding: 0 20px;
+      letter-spacing: 3px;
+  }
+
+  .file-row button {
+    float: right;
+    color: #4A90E2;
+    padding: 0 20px;
+    background: #f6f8fa;
+    border-radius: 10px;
+    line-height: 60px;
+    border: 2px solid #dcdee3;
+  }
+
+  .vue-slider-component .vue-slider-dot.vue-slider-always .vue-slider-tooltip-wrap {
+    display: none !important;
+  }
+
+  .slider-wrapper.inactive {
+    position: relative;
+  }
+
+  .slider-wrapper .apply-disable {
+    display: none;
+  }
+
+  .slider-wrapper.inactive .apply-disable {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    line-height: 25px;
+    display: block;
+    z-index: 9;
+  }
+
+  .slider-wrapper {
+    padding: 0 25px;
+  }
