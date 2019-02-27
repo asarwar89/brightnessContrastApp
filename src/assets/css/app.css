@@ -110,6 +110,7 @@
     line-height: 63px;
     display: block;
     opacity: 0;
+    cursor: pointer;
   }
 
   canvas#viewport {
