@@ -99,10 +99,10 @@ export default {
     BrightnessContrastSlider
   },
   mounted:function(){
-    this.imgLoad(true);
+    this.imgLoad();
   },
   methods: {
-    imgLoad:function(isLoad){
+    imgLoad:function(){
       this.imageWidth = this.$refs.imageBox.clientWidth;
 
       var base_image = new Image();
@@ -131,8 +131,6 @@ export default {
     },
 
     applyBrightnessContrast:function(data, updateSource) {
-      
-      var i;
 
       if (updateSource == 'brightness') {
 
@@ -190,7 +188,7 @@ export default {
           
           reader.onload = (e) => {
               this.imageSrc = e.target.result;
-              this.imgLoad(true);
+              this.imgLoad();
               this.disableSlider = false;
               this.imgReset();
           }
