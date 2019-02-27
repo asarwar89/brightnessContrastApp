@@ -168,7 +168,7 @@
     border: 2px solid #dcdee3;
   }
 
-  .vue-slider-component .vue-slider-dot.vue-slider-always .vue-slider-tooltip-wrap {
+  .slider-wrapper .vue-slider-component .vue-slider-dot.vue-slider-always .vue-slider-tooltip-wrap {
     display: none !important;
   }
 
