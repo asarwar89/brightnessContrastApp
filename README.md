@@ -1,5 +1,5 @@
-# Prerequisite
-
+## Require nodejs (tested for version 10.6.0) and npm (tested for version > 6.1.0) 
+## Tested for Mac and Linux
 
 ## Project setup
 ```
