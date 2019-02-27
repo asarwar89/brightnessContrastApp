@@ -88,10 +88,10 @@ export default {
   },
   watch: {
     imageBrightness: function(){
-      this.imgLoad();
+      this.drawImage('brightness');
     },
     imageContrast: function(){
-      this.imgLoad();
+      this.drawImage('contrast');
     }
   },
   name: 'app',
@@ -109,17 +109,14 @@ export default {
       base_image.src = this.imageSrc;
       this.targetImage = base_image;
 
-      if (isLoad) {
-        base_image.onload = (e) => {
-          this.imageHeight = (base_image.height/(base_image.width/this.imageWidth));
-          this.drawImage();
-        }
-      } else {
-        this.drawImage();
-      } 
+      base_image.onload = (e) => {
+        this.imageHeight = (base_image.height/(base_image.width/this.imageWidth));
+        this.drawImage('load');
+      }
+      
     },
 
-    drawImage: function(){
+    drawImage: function(updateSource){
       var canvas = document.getElementById('viewport');
       var context = canvas.getContext('2d');
       canvas.width = this.imageWidth;
@@ -128,30 +125,46 @@ export default {
       context.drawImage(this.targetImage, 0, 0,this.imageWidth, this.imageHeight );
 
       var imageData = context.getImageData(0, 0, this.imageWidth, this.imageHeight);
-      this.applyBrightnessContrast(imageData.data);
+      this.applyBrightnessContrast(imageData.data, updateSource);
 
       context.putImageData(imageData, 0, 0);
     },
 
-    applyBrightnessContrast:function(data) {
+    applyBrightnessContrast:function(data, updateSource) {
+      
+      var i;
+
+      if (updateSource == 'brightness') {
+
+        this.contrastFunction(data);
+        this.brightnessFunction(data);
+
+      } else if (updateSource == 'contrast') {
+
+        this.brightnessFunction(data);
+        this.contrastFunction(data);
+
+      }
+    },
+    brightnessFunction:function(data) {
       var brightnessVal = this.imageBrightness * 2 - 100;
 
       for (var i = 0; i < data.length; i+= 4) {
-          data[i] += 255 * (brightnessVal / 100);
-          data[i+1] += 255 * (brightnessVal / 100);
-          data[i+2] += 255 * (brightnessVal / 100);
+        data[i] += 255 * (brightnessVal / 100);
+        data[i+1] += 255 * (brightnessVal / 100);
+        data[i+2] += 255 * (brightnessVal / 100);
       }
-
+    },
+    contrastFunction:function(data) {
       var contrastVal = this.imageContrast * 2 - 100;
       var factor = (259.0 * (contrastVal + 255.0)) / (255.0 * (259.0 - contrastVal));
 
-      for (i = 0; i < data.length; i+= 4) {
+      for (var i = 0; i < data.length; i+= 4) {
         data[i] = this.limitColorValue(factor * (data[i] - 128.0) + 128.0);
         data[i+1] = this.limitColorValue(factor * (data[i+1] - 128.0) + 128.0);
         data[i+2] = this.limitColorValue(factor * (data[i+2] - 128.0) + 128.0);
       }
     },
-
     limitColorValue:function(value){
       if (value < 0) {
         value = 0;
