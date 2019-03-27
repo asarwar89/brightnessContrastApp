@@ -11,8 +11,11 @@
         </h2>
         
         <div :class="{inactive: disableSlider}" class="slider-wrapper">
+
           <BrightnessContrastSlider v-model="imageBrightness" v-on:change="drawImage"/>
+
           <div class="apply-disable">&nbsp;</div>
+
         </div>
 
         <p>Slide to adjust image brightness!☀️</p>
@@ -26,8 +29,11 @@
         </h2>
 
         <div :class="{inactive: disableSlider}" class="slider-wrapper">
+
           <BrightnessContrastSlider v-model="imageContrast" v-on:change="drawImage"/>
+
           <div class="apply-disable">&nbsp;</div>
+
         </div>
 
         <p>Slide to adjust image contrast! 🌓</p>
@@ -45,18 +51,22 @@
         <span class="name-block">
 
           <label for="userImgFile">Name</label>
+
           <input type="text" id="userImgFile" value="FILE NAME ...">
 
         </span>
 
         <div class="upload-button-wrapper">
+
           <button id="upload-button">
             <svg height="20" width="30">
               <polygon points="11,4 20,18 2,18" stroke-linejoin="round" style="fill:#4A90E2;stroke:#4A90E2;stroke-width:4"></polygon>
             </svg>
             Upload
           </button>
+
           <input type="file" id="fileUpload" ref="myFiles" v-on:change="processPreview">
+
         </div>
 
       </div>
@@ -66,6 +76,7 @@
     </div>
     
   </div>
+
 </template>
 
 <script>
@@ -73,7 +84,7 @@
 import BrightnessContrastSlider from './components/BrightnessContrastSlider.vue';
 
 export default {
-  data: function(){
+  data(){
     return {
       imageSrc: require('@/assets/placeholder.png'),
       imageBrightness: 50,
@@ -87,10 +98,10 @@ export default {
     }
   },
   watch: {
-    imageBrightness: function(){
+    imageBrightness(){
       this.drawImage('brightness');
     },
-    imageContrast: function(){
+    imageContrast(){
       this.drawImage('contrast');
     }
   },
@@ -98,11 +109,11 @@ export default {
   components: {
     BrightnessContrastSlider
   },
-  mounted:function(){
+  mounted(){
     this.imgLoad();
   },
   methods: {
-    imgLoad:function(){
+    imgLoad(){
       this.imageWidth = this.$refs.imageBox.clientWidth;
 
       var base_image = new Image();
@@ -116,7 +127,7 @@ export default {
       
     },
 
-    drawImage: function(updateSource){
+    drawImage(updateSource){
       var canvas = document.getElementById('viewport');
       var context = canvas.getContext('2d');
       canvas.width = this.imageWidth;
@@ -130,7 +141,7 @@ export default {
       context.putImageData(imageData, 0, 0);
     },
 
-    applyBrightnessContrast:function(data, updateSource) {
+    applyBrightnessContrast(data, updateSource) {
 
       if (updateSource == 'brightness') {
 
@@ -144,7 +155,8 @@ export default {
 
       }
     },
-    brightnessFunction:function(data) {
+    
+    brightnessFunction(data) {
       var brightnessVal = this.imageBrightness * 2 - 100;
 
       for (var i = 0; i < data.length; i+= 4) {
@@ -153,7 +165,8 @@ export default {
         data[i+2] += 255 * (brightnessVal / 100);
       }
     },
-    contrastFunction:function(data) {
+
+    contrastFunction(data) {
       var contrastVal = this.imageContrast * 2 - 100;
       var factor = (259.0 * (contrastVal + 255.0)) / (255.0 * (259.0 - contrastVal));
 
@@ -163,7 +176,8 @@ export default {
         data[i+2] = this.limitColorValue(factor * (data[i+2] - 128.0) + 128.0);
       }
     },
-    limitColorValue:function(value){
+
+    limitColorValue(value){
       if (value < 0) {
         value = 0;
       } else if (value > 255) {
@@ -172,12 +186,12 @@ export default {
       return value;
     },
 
-    imgReset:function(){
+    imgReset(){
       this.imageBrightness = 50,
       this.imageContrast = 50
     },
 
-    processPreview:function(event) {
+    processPreview(event) {
       
       var input = event.target;
       this.disableSlider = true;
